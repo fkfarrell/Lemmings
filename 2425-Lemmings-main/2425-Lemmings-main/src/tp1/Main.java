@@ -22,17 +22,22 @@ public class Main {
 		// You can replace the following line by the previous line if using Java21
 		Locale.setDefault(new Locale("es", "ES"));
 		try {
-			
+
 			int nLevel = 1;
-			if (args.length != 0) nLevel = Integer.parseInt(args[0]);
+			if (args.length != 0)
+				nLevel = Integer.parseInt(args[0]);
 
 			Game game = new Game(nLevel);
 			GameView view = new ConsoleView(game);
 			Controller controller = new Controller(game, view);
-					
+
 			controller.run();
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));
 		}
+
+		// Finns git test
+		// finn testing his other account for the repo
+
 	}
 }
