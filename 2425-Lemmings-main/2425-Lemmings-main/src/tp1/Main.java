@@ -10,7 +10,6 @@ import tp1.view.GameView;
 import tp1.view.Messages;
 
 public class Main {
-	//KATE TESTING
 	/**
 	 * Lemmings entry point
 	 * 
