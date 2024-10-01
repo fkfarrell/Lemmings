@@ -1,0 +1,8 @@
+{
+"java.dependency.packagePresentation": "hierarchical",
+"java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "c:\\Users\\finnf\\Downloads\\openlogic-openjdk-jre-21.0.4+7-windows-x64\\openlogic-openjdk-jre-21.0.4+7-windows-x64\\lib\\javafx-swt.jar",
+    "c:\\Users\\finnf\\Downloads\\openlogic-openjdk-jre-21.0.4+7-windows-x64\\openlogic-openjdk-jre-21.0.4+7-windows-x64\\lib\\jrt-fs.jar"
+]
+}

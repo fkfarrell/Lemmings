@@ -5,18 +5,28 @@ import tp1.logic.WalkerRole;
 
 public class Lemming {
 
-	//TODO fill your code
+	// TODO fill your code
 	private String position;
-	private boolean alive;
-	private int direction;
+	private boolean isAlive;
+
+	public enum direction {
+		LEFT, RIGHT, UP, DOWN
+	};
+
+	private static int LEFT = 0;
+	private static int RIGHT = 1;
+	private static int UP = 2;
+	private static int DOWN = 3;
+
 	private int forceOfFall;
 	private WalkerRole role;
 	private Game game;
-	
+
 	/**
-	 *  Implements the automatic update	
+	 * Implements the automatic update
 	 */
 	public void update() {
-		//TODO fill your code
+		// TODO fill your code
+		// updates the lemming’s status (falling, dead, or moving).
 	}
 }

@@ -5,13 +5,16 @@ public class Game {
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
 
+	public static int cycleNum = 0;
+	public static final int MAX_FALL = 3;
+
 	public Game(int nLevel) {
 		// TODO Auto-generated constructor stub
 	}
 
 	public int getCycle() {
 		// TODO Auto-generated method stub
-		return 0;
+		return cycleNum;
 	}
 
 	public int numLemmingsInBoard() {

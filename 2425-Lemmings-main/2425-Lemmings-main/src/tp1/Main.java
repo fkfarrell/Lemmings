@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import tp1.control.Controller;
 import tp1.logic.Game;
+import tp1.logic.gameobjects.Lemming;
 import tp1.view.ConsoleColorsView;
 import tp1.view.ConsoleView;
 import tp1.view.GameView;
@@ -17,9 +18,9 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// Required to avoid issues with tests
-		// Locale.of("es", "ES");
+		Locale.of("es", "ES"); // (java 21+)
 		// You can replace the following line by the previous line if using Java21
-		Locale.setDefault(new Locale("es", "ES"));
+		// Locale.setDefault(new Locale("es", "ES")); (java 17)
 		try {
 
 			int nLevel = 1;
@@ -27,16 +28,15 @@ public class Main {
 				nLevel = Integer.parseInt(args[0]);
 
 			Game game = new Game(nLevel);
-			GameView view = new ConsoleView(game);
+			GameView view = new ConsoleColorsView(game);
 			Controller controller = new Controller(game, view);
 
 			controller.run();
+
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));
 		}
-
-		// Finns git test
-		// finn testing his other account for the repo
+		// use String1.equals(String2); for comparing strings
 
 	}
 }
