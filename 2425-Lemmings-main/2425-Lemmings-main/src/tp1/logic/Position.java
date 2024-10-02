@@ -7,7 +7,7 @@ package tp1.logic;
  */
 public class Position {
 
-	private int col;
+	private final int COL=0;
 	private int row;
 
 	//TODO fill your code
