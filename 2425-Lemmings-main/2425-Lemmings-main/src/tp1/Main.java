@@ -23,7 +23,7 @@ public class Main {
 		// Locale.setDefault(new Locale("es", "ES")); (java 17)
 		try {
 
-			int nLevel = 1;
+			int nLevel = 0;
 			if (args.length != 0)
 				nLevel = Integer.parseInt(args[0]);
 
@@ -33,10 +33,8 @@ public class Main {
 
 			controller.run();
 			view.showWelcome();
-			view.showGame();
 
-			System.out.print("Finn testing creating level objects : " +
-					game.container.exitDoors.get(0).getPosition().toString());
+			view.showGame();
 
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));

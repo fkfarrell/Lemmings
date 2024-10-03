@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import java.util.Objects;
+
 import tp1.view.Messages;
 
 /**
@@ -31,6 +33,28 @@ public class Position {
 	// Getter for row
 	public int getRow() {
 		return row;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// Check if the object being compared is the same instance
+		if (this == obj) {
+			return true;
+		}
+
+		// Check if the object is null or not the same class
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+
+		// Cast the object to a Position and compare the fields
+		Position other = (Position) obj;
+		return this.col == other.col && this.row == other.row;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + col + "," + row + ")";
 	}
 
 }

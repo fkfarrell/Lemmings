@@ -12,9 +12,9 @@ public class ConsoleView extends GameView {
 	protected static final String SPACE = " ";
 	private static final String LATERAL_TAB = "  ";
 
-	private static final String CELL_BORDER_CHAR = "—";
+	private static final String CELL_BORDER_CHAR = "-";
 
-	private static final String VERTICAL_DELIMITER = "┃"; // "|";
+	private static final String VERTICAL_DELIMITER = "|"; // "|";
 
 	private static final String NEW_LINE = System.lineSeparator();
 

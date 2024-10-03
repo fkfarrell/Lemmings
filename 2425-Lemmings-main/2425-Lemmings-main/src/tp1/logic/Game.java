@@ -22,30 +22,49 @@ public class Game {
 		Position doorPosition = new Position(9, 9);
 		ExitDoor newDoor = new ExitDoor(doorPosition);
 		container.exitDoors.add(newDoor);
+		Position starterPos = new Position(0, 0);
 
 		switch (nLevel) {
 			case 0:
-				// Add lemmings, walls and exit door. <<<<<<<<<<<<<<<< does this work ?
-
 				for (int i = 0; i < 3; i++) {
-					Lemming newLemming = new Lemming();
-					container.addLemming(newLemming);
+					container.addLemming(new Lemming(starterPos));
+					Position wallPosition = new Position(i, 3);
+					container.addWall(new Wall(wallPosition));
+					for (int j = 4; j < 8; j++) {
+						Position wallPosition2 = new Position(j, 5);
+						container.addWall(new Wall(wallPosition2));
+					}
 				}
-				// add walls to the gameObjectConatainer
-				Wall newWall = new Wall(null); // walls need position param, in what form is position??
-				container.addWall(newWall);
 
 				break;
 			case 1:
 				for (int i = 0; i < 4; i++) {
-					Lemming newLemming = new Lemming();
-					container.addLemming(newLemming);
+					container.addLemming(new Lemming(starterPos));
+					Position wallPosition = new Position(i, 3);
+					container.addWall(new Wall(wallPosition));
+					for (int j = 4; j < 8; j++) {
+						Position wallPosition2 = new Position(j, 8);
+						container.addWall(new Wall(wallPosition2));
+					}
+					for (int k = 7; k < 10; k++) {
+						Position wallPosition2 = new Position(k, 5);
+						container.addWall(new Wall(wallPosition2));
+					}
 				}
 				break;
 			default:
 				for (int i = 0; i < 5; i++) {
-					Lemming newLemming = new Lemming();
-					container.addLemming(newLemming);
+					container.addLemming(new Lemming(starterPos));
+					Position wallPosition = new Position(i, 2);
+					container.addWall(new Wall(wallPosition));
+					for (int j = 2; j < 8; j++) {
+						Position wallPosition2 = new Position(j, 8);
+						container.addWall(new Wall(wallPosition2));
+					}
+					for (int k = 8; k < 12; k++) {
+						Position wallPosition2 = new Position(k, 9);
+						container.addWall(new Wall(wallPosition2));
+					}
 				}
 				break;
 		}
@@ -57,7 +76,6 @@ public class Game {
 	}
 
 	public int numLemmingsInBoard() {
-		// TODO Auto-generated method stub
 		int numLemmings = container.lemmings.size();
 		return numLemmings;
 	}
@@ -77,23 +95,52 @@ public class Game {
 		return 0;
 	}
 
+	// public String positionToString(int col, int row) {
+
+	// Position locale = new Position(col, row);
+
+	// if (locale.toString() != null) {
+	// if (locale.toString() == container.exitDoors.get(0).toString()) {
+	// return "🚪";
+	// } else if (locale.toString() == "WAll") {
+	// return "▓";
+	// } else
+	// return " ";
+
+	// } else {
+	// System.out.println("Nothing to see here!");
+	// return null;
+	// }
+
+	// }
+
 	public String positionToString(int col, int row) {
 
-		Position locale = new Position(col, row);
-		System.out.println("what is a locale.toString " + container.exitDoors.get(0).toString());
-		if (locale.toString() != null) {
-			if (locale.toString() == container.exitDoors.get(0).toString()) {
-				return "🚪";
-			} else if (locale.toString() == "▓") {
-				return "▓";
-			} else
-				return " ";
+		Position currentPosition = new Position(col, row);
 
-		} else {
-			System.out.println("Nothing to see here!");
-			return null;
+		// Check for Exit Door
+		for (ExitDoor exitDoor : container.exitDoors) {
+			if (exitDoor.getPosition().toString().equals(currentPosition.toString())) {
+				return "D"; // Exit door representation
+			}
 		}
 
+		// Check for Walls
+		for (Wall wall : container.walls) {
+			if (wall.getPosition().equals(currentPosition)) {
+				return "W"; // Wall representation
+			}
+		}
+
+		// Check for Lemmings
+		for (Lemming lemming : container.lemmings) {
+			if (lemming.getPosition().equals(currentPosition)) {
+				return "L"; // Lemming representation
+			}
+		}
+
+		// If nothing is at this position, return empty space
+		return " ";
 	}
 
 	public boolean playerWins() {

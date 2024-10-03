@@ -15,4 +15,8 @@ public class ExitDoor {
         return this.position;
     }
 
+    public String toString() {
+        return doorSprite;
+    }
+
 }

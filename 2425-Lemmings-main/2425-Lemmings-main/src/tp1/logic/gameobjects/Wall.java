@@ -14,4 +14,8 @@ public class Wall {
     public Position getPosition() {
         return this.position;
     }
+
+    public String toString() {
+        return wallSprite;
+    }
 }
