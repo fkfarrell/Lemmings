@@ -28,10 +28,15 @@ public class Main {
 				nLevel = Integer.parseInt(args[0]);
 
 			Game game = new Game(nLevel);
-			GameView view = new ConsoleColorsView(game);
+			GameView view = new ConsoleView(game);
 			Controller controller = new Controller(game, view);
 
 			controller.run();
+			view.showWelcome();
+			view.showGame();
+
+			System.out.print("Finn testing creating level objects : " +
+					game.container.exitDoors.get(0).getPosition().toString());
 
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));

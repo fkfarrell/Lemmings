@@ -1,5 +1,17 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Position;
+
 public class Wall {
-    private String position;
+    private Position position;
+    private String wallSprite = "▓";
+
+    public Wall(Position position) {
+        this.position = position;
+        wallSprite = position.toString();
+    }
+
+    public Position getPosition() {
+        return this.position;
+    }
 }
