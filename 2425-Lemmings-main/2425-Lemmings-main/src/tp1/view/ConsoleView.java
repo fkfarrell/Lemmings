@@ -8,13 +8,13 @@ import tp1.logic.Game;
 import tp1.util.MyStringUtils;
 
 public class ConsoleView extends GameView {
-	
+
 	protected static final String SPACE = " ";
 	private static final String LATERAL_TAB = "  ";
 
-	private static final String CELL_BORDER_CHAR = "—";
+	private static final String CELL_BORDER_CHAR = "-";
 
-	private static final String VERTICAL_DELIMITER = "┃"; // "|";
+	private static final String VERTICAL_DELIMITER = "|"; // "|";
 
 	private static final String NEW_LINE = System.lineSeparator();
 
@@ -30,7 +30,7 @@ public class ConsoleView extends GameView {
 	private static final String TAB = MyStringUtils.repeat(SPACE, CELL_SIZE);
 
 	private static final String INDENTED_UPPER_ROW_BORDER = TAB + UPPER_ROW_BORDER;
-	private static final String INDENTED_LOWER_ROW_BORDER = TAB + LOWER_ROW_BORDER ;
+	private static final String INDENTED_LOWER_ROW_BORDER = TAB + LOWER_ROW_BORDER;
 
 	Scanner scanner;
 
@@ -38,7 +38,7 @@ public class ConsoleView extends GameView {
 		super(game);
 		scanner = new Scanner(System.in);
 	}
-		
+
 	/**
 	 * Builds a string that represent the game status
 	 * 
@@ -60,7 +60,7 @@ public class ConsoleView extends GameView {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		
+
 		// Game Status
 		str.append(getInfo());
 		str.append(NEW_LINE);
@@ -73,18 +73,18 @@ public class ConsoleView extends GameView {
 		String colName;
 		for (int row = 0; row < Game.DIM_Y; row++) {
 			str.append(LATERAL_TAB);
-			colName = Character.toString('A'+row%27);
+			colName = Character.toString('A' + row % 27);
 			str.append(colName);
 			str.append(VERTICAL_DELIMITER);
 
 			for (int col = 0; col < Game.DIM_X; col++) {
-				str.append(consoleCell(game.positionToString(col, row)));
-				//str.append(VERTICAL_DELIMITER);
+				str.append(consoleCell(game.positionToString(col, row)));//
+				// str.append(VERTICAL_DELIMITER);
 			}
 			str.append(VERTICAL_DELIMITER);
 			str.append(colName);
 			str.append(NEW_LINE);
-			//str.append(ROW_BORDER);
+			// str.append(ROW_BORDER);
 		}
 
 		str.append(LATERAL_TAB + SPACE);
@@ -96,30 +96,33 @@ public class ConsoleView extends GameView {
 
 	private static String colNumbersLine() {
 		StringBuilder str = new StringBuilder();
-		str.append(LATERAL_TAB + SPACE+ SPACE);
+		str.append(LATERAL_TAB + SPACE + SPACE);
 		for (int col = 0; col < Game.DIM_X; col++) {
-			str.append(MyStringUtils.center(Integer.toString((col+1)%100), CELL_SIZE));
+			str.append(MyStringUtils.center(Integer.toString((col + 1) % 100), CELL_SIZE));
 		}
 		str.append(NEW_LINE);
 		return str.toString();
 	}
-	
+
 	private String endMessage() {
 		StringBuilder sb = new StringBuilder();
-		if(game.playerWins()) sb.append(Messages.PLAYER_WINS);
-		else if (game.playerLooses()) sb.append(Messages.PLAYER_LOOSES);
-		else sb.append(Messages.PLAYER_QUITS);
+		if (game.playerWins())
+			sb.append(Messages.PLAYER_WINS);
+		else if (game.playerLooses())
+			sb.append(Messages.PLAYER_LOOSES);
+		else
+			sb.append(Messages.PLAYER_QUITS);
 		return sb.toString();
 	}
 
 	protected String consoleCell(String celStr) {
 		return MyStringUtils.center(celStr, CELL_SIZE);
 	}
-	
+
 	@Override
 	public void showWelcome() {
 		System.out.println(Messages.WELCOME);
-   }
+	}
 
 	@Override
 	public void showGame() {
@@ -133,9 +136,9 @@ public class ConsoleView extends GameView {
 
 	@Override
 	public void showError(String message) {
-        System.out.println(Messages.ERROR.formatted(message));		
+		System.out.println(Messages.ERROR.formatted(message));
 	}
-	
+
 	@Override
 	public void showMessage(String message) {
 		System.out.println(message);
@@ -152,7 +155,7 @@ public class ConsoleView extends GameView {
 		String line = scanner.nextLine();
 		String[] words = line.trim().split("\\s+");
 
-        System.out.println(Messages.DEBUG.formatted(line));		
+		System.out.println(Messages.DEBUG.formatted(line));
 
 		return words;
 	}

@@ -1,27 +1,41 @@
 package tp1.logic;
 
-import tp1.logic.gameobjects.ExitDoor;
-import tp1.logic.gameobjects.Lemming;
-import tp1.logic.gameobjects.Wall;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
+import tp1.logic.gameobjects.*;
 
 public class GameObjectContainer {
-	//list of objects
-	ArrayList<Lemming> lemmingsList = new ArrayList<Lemming>();
-	ArrayList<Wall> wallsList = new ArrayList<Wall>();
-	ArrayList<ExitDoor> exitDoorsList = new ArrayList<ExitDoor>();
+	// Variables
 
-	public void add(Lemming lemming) {
-		lemmingsList.add(lemming);
+	// public static ArrayList<Lemming> lemmings = new ArrayList<Lemming>();
+	public ArrayList<Lemming> lemmings;
+	public ArrayList<Wall> walls;
+	public ArrayList<ExitDoor> exitDoors;
+
+	// Constructor
+	public GameObjectContainer() {
+		// Initialize the lemmings ArrayList
+		lemmings = new ArrayList<>();
+		walls = new ArrayList<>();
+		exitDoors = new ArrayList<>();
+
 	}
 
-    public void add(Wall wall) {
-		wallsList.add(wall);
+	// Methods
+	public static void update() {
 	}
 
-	public void add(ExitDoor exitDoor) {
-		exitDoorsList.add(exitDoor);
+	// Method to add a Lemming to the container
+	public void addLemming(Lemming lemming) {
+		lemmings.add(lemming);
+	}
+
+	public void addWall(Wall wall) {
+		walls.add(wall);
+	}
+
+	public void addExitDoor(ExitDoor exitDoor) {
+		exitDoors.add(exitDoor);
 	}
 
 
