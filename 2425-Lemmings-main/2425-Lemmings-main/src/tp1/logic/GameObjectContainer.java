@@ -7,18 +7,16 @@ import tp1.logic.gameobjects.*;
 public class GameObjectContainer {
 	// Variables
 
-	// public static ArrayList<Lemming> lemmings = new ArrayList<Lemming>();
 	public ArrayList<Lemming> lemmings;
 	public ArrayList<Wall> walls;
 	public ArrayList<ExitDoor> exitDoors;
 
 	// Constructor
 	public GameObjectContainer() {
-		// Initialize the lemmings ArrayList
+
 		lemmings = new ArrayList<>();
 		walls = new ArrayList<>();
 		exitDoors = new ArrayList<>();
-
 	}
 
 	// Methods
@@ -37,6 +35,5 @@ public class GameObjectContainer {
 	public void addExitDoor(ExitDoor exitDoor) {
 		exitDoors.add(exitDoor);
 	}
-
 
 }

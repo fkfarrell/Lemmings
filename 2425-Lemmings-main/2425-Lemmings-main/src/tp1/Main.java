@@ -35,7 +35,6 @@ public class Main {
 
 			controller.run();
 			view.showWelcome();
-
 			view.showGame();
 
 		} catch (NumberFormatException e) {

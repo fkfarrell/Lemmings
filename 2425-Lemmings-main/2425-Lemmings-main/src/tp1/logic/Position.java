@@ -11,7 +11,7 @@ import tp1.view.Messages;
  */
 public class Position {
 
-	private final int COL=0;
+	private int col;
 	private int row;
 
 	// TODO fill your code
@@ -56,5 +56,4 @@ public class Position {
 	public String toString() {
 		return "(" + col + "," + row + ")";
 	}
-
 }
