@@ -11,7 +11,7 @@ import tp1.view.Messages;
  */
 public class Position {
 
-	private int col;
+	private final int COL=0;
 	private int row;
 
 	// TODO fill your code
