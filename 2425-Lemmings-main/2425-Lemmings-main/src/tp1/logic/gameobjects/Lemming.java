@@ -23,20 +23,30 @@ public class Lemming {
 	private WalkerRole role;
 	private Game game;
 
-	public Lemming(Position position) {
+	public Lemming(Position position, boolean alive, WalkerRole role) {
 		this.position = position;
+		this.isAlive = alive;
+		this.role = role;
 	}
 
 	/**
 	 * Implements the automatic update
 	 */
 	public void update() {
-		// TODO fill your code
 		// updates the lemming’s status (falling, dead, or moving).
+		// should move left to right
+		role.advance(this);
+
 	}
 
 	public Position getPosition() {
 		return this.position;
+	}
+
+	public void move() {
+		Position currentPosition = this.position;
+		this.position = new Position(currentPosition.getCol() + 1, currentPosition.getRow());
+
 	}
 
 	// implemend equals method, attribute value should ne the same

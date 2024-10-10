@@ -20,10 +20,12 @@ public class GameObjectContainer {
 	}
 
 	// Methods
-	public static void update() {
+	public void update() {
+		for (Lemming lemming : lemmings) {
+			lemming.update();
+		}
 	}
 
-	// Method to add a Lemming to the container
 	public void addLemming(Lemming lemming) {
 		lemmings.add(lemming);
 	}
