@@ -13,14 +13,12 @@ public class WalkerRole {
     }
 
     public void advance(Lemming lemming) {
-        // responsible for the lemming’s movement
-        // behavior. Calls the move() method in the Lemming class.
 
-        // lemming.walk();
+        // should maybe just call canMove and have the memming delegate the move?
+
         if (lemming.canMove(lemming.getPosition(), lemming.getDirection())) {
-            lemming.walk();
+            lemming.walkAndFall();
         }
-
     }
 
 }

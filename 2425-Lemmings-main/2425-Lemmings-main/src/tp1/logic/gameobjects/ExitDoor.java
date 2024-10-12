@@ -19,4 +19,7 @@ public class ExitDoor {
         return doorSprite;
     }
 
+    public void update() {
+    }
+
 }

@@ -10,19 +10,21 @@ public class Lemming extends GameObjectContainer {
 
 	// TODO fill your code
 	private Position position;
-	private boolean isAlive;
+	public boolean isAlive;
 	private int forceOfFall;
 	private WalkerRole role;
 	private Game game;
 	public Direction dir;
+	public boolean exited;
 	private GameObjectContainer container;
 
-	public Lemming(Position position, boolean alive, WalkerRole role, Direction dir, Game game) {
+	public Lemming(Position position, boolean alive, WalkerRole role, Direction dir, Game game, boolean exited) {
 		this.position = position;
 		this.isAlive = alive;
 		this.role = role;
 		this.dir = dir;
 		this.game = game;
+		this.forceOfFall = forceOfFall;
 	}
 
 	/**
@@ -30,8 +32,9 @@ public class Lemming extends GameObjectContainer {
 	 */
 	public void update() {
 		// updates the lemming’s status (falling, dead, or moving).
-		// should move left to right
-		role.advance(this);
+		if (isAlive) {
+			role.advance(this);
+		}
 
 	}
 
@@ -44,31 +47,58 @@ public class Lemming extends GameObjectContainer {
 	}
 
 	public boolean canMove(Position pos, Direction dir) {
-		// check whether the move can be made in a given directoin.
-
 		int moveX = this.position.getCol() + dir.getX();
 		int moveY = this.position.getRow() + dir.getY();
 
-		if (game.positionToString(moveX, moveY) == "▓") {
-			this.reverseDir();
-			return false;
-		} else if (moveX == 0 || moveX == 10) {
-			this.reverseDir();
-			return false;
+		// Check if there's a floor beneath the lemming
+		if (game.positionToString(pos.getCol(), pos.getRow() + 1).equals("▓")) {
+			// If there's a floor, check if the next position is a wall
+
+			// this.dir = Direction.RIGHT;
+
+			if (moveX == 0 || moveX == 10) {
+				this.reverseDir();
+			}
+
+			if (game.positionToString(moveX, moveY).equals("▓")) {
+				this.reverseDir();
+				return false;
+			} else {
+				return true;
+			}
 		} else {
+			// If there's no floor, change direction
+			this.dir = Direction.DOWN;
 			return true;
 		}
-
 	}
 
-	public void walk() {
+	public void walkAndFall() {
 		int moveX = this.position.getCol() + dir.getX();
 		int moveY = this.position.getRow() + dir.getY();
-		if (this.canMove(this.position, this.dir)) {
 
-			Position currentPosition = this.position;
+		// Check if the lemming has reached the bottom of the board
+		if (moveY < Game.DIM_Y) {
 			this.position = new Position(moveX, moveY);
+
+			// handle exit
+			for (ExitDoor exitDoor : game.container.exitDoors) {
+				if (exitDoor.getPosition().equals(this.position)) {
+					this.exited = true;
+					this.position = new Position(12, 12);
+					this.dir = Direction.NONE;
+				}
+			}
+
+		} else {
+			// If the lemming has reached the bottom, stop it from falling further
+			this.dir = Direction.RIGHT;
 		}
+
+		if (this.forceOfFall > Game.MAX_FALL) {
+			this.isAlive = false;
+		}
+
 	}
 
 	private void reverseDir() {

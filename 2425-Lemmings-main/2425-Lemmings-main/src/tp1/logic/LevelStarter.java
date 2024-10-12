@@ -105,8 +105,8 @@ public class LevelStarter {
         game.cycleNum = 0;
         game.container = new GameObjectContainer();
 
-        final int DOOR_ROW = 9;
-        final int DOOR_COL = 10;
+        final int DOOR_ROW = 7;
+        final int DOOR_COL = 9;
 
         Position doorPosition = new Position(DOOR_COL, DOOR_ROW);
         ExitDoor newDoor = new ExitDoor(doorPosition);
@@ -115,20 +115,26 @@ public class LevelStarter {
 
         switch (nLevel) {
             case 0:
+
                 Position[] lemmingPositionsLevel0 = {
                         new Position(1, 1),
-                        new Position(2, 2),
-                        new Position(3, 3)
+                        new Position(2, 1),
+                        new Position(3, 1)
                 };
                 for (int i = 0; i < lemmingPositionsLevel0.length; i++) {
                     Position lemmingPos = lemmingPositionsLevel0[i];
-                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.RIGHT, game));
+                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.RIGHT, game, false));
 
                     Position wallPosition = new Position(i, 3);
                     game.container.addWall(new Wall(wallPosition));
 
-                    for (int j = 4; j < 8; j++) {
+                    for (int j = 3; j < 8; j++) {
                         Position wallPosition2 = new Position(j, 5);
+                        game.container.addWall(new Wall(wallPosition2));
+                    }
+
+                    for (int j = 8; j < 10; j++) {
+                        Position wallPosition2 = new Position(j, 8);
                         game.container.addWall(new Wall(wallPosition2));
                     }
                 }
@@ -143,7 +149,7 @@ public class LevelStarter {
                 for (int i = 0; i < lemmingPositionsLevel1.length; i++) {
                     Position lemmingPos = lemmingPositionsLevel1[i];
                     // Add Direction.RIGHT (or another direction) as the last parameter
-                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.LEFT, game));
+                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.LEFT, game, false));
 
                     Position wallPosition = new Position(i, 3);
                     game.container.addWall(new Wall(wallPosition));
@@ -169,7 +175,7 @@ public class LevelStarter {
                 for (int i = 0; i < lemmingPositionsDefault.length; i++) {
                     Position lemmingPos = lemmingPositionsDefault[i];
                     // Add Direction.RIGHT (or another direction) as the last parameter
-                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.RIGHT, game));
+                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.RIGHT, game, false));
 
                     Position wallPosition = new Position(i, 2);
                     game.container.addWall(new Wall(wallPosition));

@@ -21,7 +21,7 @@ public class Game {
 
 	public Game(int nLevel) {
 		this.initialLvl = nLevel;
-		LevelStarter.initializeGame(this, nLevel);
+		LevelStarter.initializeGame(this, 1);
 
 	}
 
@@ -31,17 +31,28 @@ public class Game {
 
 	public int numLemmingsInBoard() {
 		int numLemmings = container.lemmings.size();
-		return numLemmings;
+		int calc = numLemmings - (numLemmingsDead() + numLemmingsExit());
+		return calc;
 	}
 
 	public int numLemmingsDead() {
-		// TODO Auto-generated method stub
-		return 0;
+		int deadLemmingCount = 0;
+		for (Lemming lemming : container.lemmings) {
+			if (!lemming.isAlive) {
+				deadLemmingCount++;
+			}
+		}
+		return deadLemmingCount;
 	}
 
 	public int numLemmingsExit() {
-		// TODO Auto-generated method stub
-		return 0;
+		int exitedLemmings = 0;
+		for (Lemming lemming : container.lemmings) {
+			if (lemming.exited) {
+				exitedLemmings++;
+			}
+		}
+		return exitedLemmings;
 	}
 
 	public int numLemmingsToWin() {
@@ -55,8 +66,8 @@ public class Game {
 
 		// Check for Exit Door
 		for (ExitDoor exitDoor : container.exitDoors) {
-			if (exitDoor.getPosition().toString().equals(currentPosition.toString())) {
-				return "🚪";
+			if (exitDoor.getPosition().equals(currentPosition)) {
+				return "X"; // replace with 🚪 in ecplise
 			}
 		}
 
@@ -70,9 +81,14 @@ public class Game {
 		// Check for Lemmings
 		for (Lemming lemming : container.lemmings) {
 			if (lemming.getPosition().equals(currentPosition)) {
-				return "B"; // Lemming representation
-				// should be backwards if the lemming is moving right to left
+
+				if (lemming.getDirection().toString() == "RIGHT" || lemming.getDirection().toString() == "DOWN") {
+					return "b";
+				} else {
+					return "d";
+				}
 			}
+
 		}
 		return " ";
 	}

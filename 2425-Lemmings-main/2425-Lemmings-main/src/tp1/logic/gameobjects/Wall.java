@@ -18,4 +18,8 @@ public class Wall {
     public String toString() {
         return wallSprite;
     }
+
+    public void update() {
+
+    }
 }
