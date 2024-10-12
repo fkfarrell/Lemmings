@@ -17,6 +17,7 @@ public class GameObjectContainer {
 		lemmings = new ArrayList<>();
 		walls = new ArrayList<>();
 		exitDoors = new ArrayList<>();
+
 	}
 
 	// Methods

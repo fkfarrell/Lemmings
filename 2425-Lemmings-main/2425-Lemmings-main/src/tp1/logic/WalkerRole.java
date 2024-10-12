@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.Wall;
 
 public class WalkerRole {
 
@@ -15,7 +16,10 @@ public class WalkerRole {
         // responsible for the lemming’s movement
         // behavior. Calls the move() method in the Lemming class.
 
-        lemming.move();
+        // lemming.walk();
+        if (lemming.canMove(lemming.getPosition(), lemming.getDirection())) {
+            lemming.walk();
+        }
 
     }
 
