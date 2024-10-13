@@ -26,12 +26,13 @@ public class Controller {
 		// TODO fill your code: The main loop that displays the game, asks the user for
 		// input, and executes the action.
 
-		while (game.gameRunning) {
+		while (game.gameRunning && !game.playerWins) {
 			// Draw Phase - put in while loop.
 			view.showGame();
 
 			// User Command
 			view.getPrompt();
+
 		}
 
 		view.showEndMessage();

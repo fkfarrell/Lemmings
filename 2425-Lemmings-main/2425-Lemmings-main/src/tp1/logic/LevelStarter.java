@@ -142,6 +142,7 @@ public class LevelStarter {
             case 1:
                 Position[] lemmingPositionsLevel1 = {
                         new Position(0, 0),
+                        new Position(1, 1),
                         new Position(3, 1),
                         new Position(5, 2),
                         new Position(7, 3)
@@ -149,7 +150,7 @@ public class LevelStarter {
                 for (int i = 0; i < lemmingPositionsLevel1.length; i++) {
                     Position lemmingPos = lemmingPositionsLevel1[i];
                     // Add Direction.RIGHT (or another direction) as the last parameter
-                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.LEFT, game, false));
+                    game.container.addLemming(new Lemming(lemmingPos, true, walker, Direction.RIGHT, game, false));
 
                     Position wallPosition = new Position(i, 3);
                     game.container.addWall(new Wall(wallPosition));
