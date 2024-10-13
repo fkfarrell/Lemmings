@@ -3,7 +3,7 @@ package tp1.view;
 import tp1.util.MyStringUtils;
 
 public class Messages {
-	
+
 	public static final String VERSION = "1.0";
 
 	public static final String GAME_NAME = "Lemmings";
@@ -38,8 +38,8 @@ public class Messages {
 			"[e]xit: end the execution of the game"};
 	/* @formatter:on */
 
-	public static final String HELP = String.join(LINE_SEPARATOR+"   ", HELP_LINES) + LINE_SEPARATOR;
-	
+	public static final String HELP = String.join(LINE_SEPARATOR + "   ", HELP_LINES) + LINE_SEPARATOR;
+
 	public static final String UNKNOWN_COMMAND = "Unknown command";
 
 	public static final String COMMAND_PARAMETERS_MISSING = "Missing parameters";
@@ -67,16 +67,16 @@ public class Messages {
 	public static final String PLAYER_QUITS = "Player leaves the game";
 
 	public static final String PLAYER_WINS = "Player wins!";
-	public static final String PLAYER_LOOSES = "Player looses...";
+	public static final String PLAYER_LOOSES = "Player loses...";
 
 	public static final String POSITION = "(%s,%s)";
 
-//Commands
+	// Commands
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";
 	public static final String COMMAND_NONE_DETAILS = "[n]one | \"\"";
 	public static final String COMMAND_NONE_HELP = "user does not perform any action";
-	
+
 	public static final String COMMAND_EXIT_NAME = "exit";
 	public static final String COMMAND_EXIT_SHORTCUT = "e";
 	public static final String COMMAND_EXIT_DETAILS = "[e]xit";
@@ -87,9 +87,9 @@ public class Messages {
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "shows this help";
 
-//Symbols
+	// Symbols
 	public static final String EMPTY = "";
-	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
+	public static final String WALL = MyStringUtils.repeat("▓", ConsoleView.CELL_SIZE);
 	public static final String EXIT_DOOR = "🚪";
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";

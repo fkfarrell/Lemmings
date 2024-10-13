@@ -15,13 +15,17 @@ public class Game {
 	public static final int MAX_FALL = 3;
 
 	public GameObjectContainer container = new GameObjectContainer();
-	private int currentLvl;
+	private int currentLvl = 0;
 	public boolean gameRunning = true;
 	private int initialLvl;
 
+	public boolean playerWins = false;
+
 	public Game(int nLevel) {
+		nLevel = currentLvl;
 		this.initialLvl = nLevel;
-		LevelStarter.initializeGame(this, 1);
+		LevelStarter.initializeGame(this, this.initialLvl);
+		currentLvl++;
 
 	}
 
@@ -51,13 +55,17 @@ public class Game {
 			if (lemming.exited) {
 				exitedLemmings++;
 			}
+			if (exitedLemmings == numLemmingsToWin()) {
+				this.playerWins();
+			}
 		}
 		return exitedLemmings;
 	}
 
 	public int numLemmingsToWin() {
 		// TODO Auto-generated method stub
-		return 0;
+		int numLemmingsToWin = currentLvl;
+		return numLemmingsToWin;
 	}
 
 	public String positionToString(int col, int row) {
@@ -93,13 +101,14 @@ public class Game {
 		return " ";
 	}
 
-	public boolean playerWins() {
-		// TODO Auto-generated method stub
-		return false;
+	public void playerWins() {
+		playerWins = true;
 	}
 
 	public boolean playerLooses() {
-		// TODO Auto-generated method stub
+		if (numLemmingsDead() == numLemmingsExit()) {
+			return true;
+		}
 		return false;
 	}
 

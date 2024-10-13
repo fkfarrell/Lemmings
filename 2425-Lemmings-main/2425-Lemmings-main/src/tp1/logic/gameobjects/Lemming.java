@@ -34,6 +34,12 @@ public class Lemming extends GameObjectContainer {
 		// updates the lemming’s status (falling, dead, or moving).
 		if (isAlive) {
 			role.advance(this);
+			if (dir == Direction.DOWN) {
+				forceOfFall++;
+			}
+		}
+		if (forceOfFall > 3) {
+			this.isAlive = false;
 		}
 
 	}
@@ -56,6 +62,7 @@ public class Lemming extends GameObjectContainer {
 
 			// this.dir = Direction.RIGHT;
 
+			this.forceOfFall = 0;
 			if (moveX == 0 || moveX == 10) {
 				this.reverseDir();
 			}
@@ -85,7 +92,8 @@ public class Lemming extends GameObjectContainer {
 			for (ExitDoor exitDoor : game.container.exitDoors) {
 				if (exitDoor.getPosition().equals(this.position)) {
 					this.exited = true;
-					this.position = new Position(12, 12);
+					// this.position = new Position(12, 12);
+					// container.lemmings.remove(position.toString());
 					this.dir = Direction.NONE;
 				}
 			}
@@ -95,7 +103,7 @@ public class Lemming extends GameObjectContainer {
 			this.dir = Direction.RIGHT;
 		}
 
-		if (this.forceOfFall > Game.MAX_FALL) {
+		if (this.forceOfFall > Game.MAX_FALL || (moveY >= 9)) {
 			this.isAlive = false;
 		}
 
